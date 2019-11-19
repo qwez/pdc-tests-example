@@ -1,0 +1,201 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentation generated automatically",
+    "version": "0.0.3-SNAPSHOT",
+    "title": "Search Suggestions Service API Documentation",
+    "contact": {}
+  },
+  "host": "aapps-emb.lmru.adeo.com",
+  "basePath": "/opus/api/search-suggestions",
+  "tags": [
+    {
+      "name": "suggestion-controller",
+      "description": "Suggestion Controller"
+    }
+  ],
+  "paths": {
+    "/suggestions": {
+      "post": {
+        "tags": [
+          "suggestion-controller"
+        ],
+        "summary": "getSuggestions",
+        "operationId": "getSuggestionsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "query-debug",
+            "in": "header",
+            "description": "query-debug",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SuggestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SuggestionResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/suggestions/strict": {
+      "post": {
+        "tags": [
+          "suggestion-controller"
+        ],
+        "summary": "getStrictSuggestion",
+        "operationId": "getStrictSuggestionUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "query-debug",
+            "in": "header",
+            "description": "query-debug",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StrictSuggestionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StrictSuggestionResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "StrictSuggestionRequest": {
+      "type": "object",
+      "properties": {
+        "keyPhrase": {
+          "type": "string"
+        }
+      },
+      "title": "StrictSuggestionRequest"
+    },
+    "StrictSuggestionResponse": {
+      "type": "object",
+      "properties": {
+        "elasticQuery": {
+          "type": "string"
+        },
+        "suggestion": {
+          "$ref": "#/definitions/Suggestion"
+        }
+      },
+      "title": "StrictSuggestionResponse"
+    },
+    "Suggestion": {
+      "type": "object",
+      "properties": {
+        "facets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "familyId": {
+          "type": "string"
+        },
+        "phrase": {
+          "type": "string"
+        }
+      },
+      "title": "Suggestion"
+    },
+    "SuggestionRequest": {
+      "type": "object",
+      "properties": {
+        "keyPhrase": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "SuggestionRequest"
+    },
+    "SuggestionResponse": {
+      "type": "object",
+      "properties": {
+        "elasticQuery": {
+          "type": "string"
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Suggestion"
+          }
+        }
+      },
+      "title": "SuggestionResponse"
+    }
+  }
+}
