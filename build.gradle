@@ -16,9 +16,6 @@ dependencies {
     testImplementation group: 'org.springframework', name: 'spring-web', version: '5.2.1.RELEASE'
     testImplementation group: 'com.atlassian.oai', name: 'swagger-request-validator-spring-web-client', version: '2.8.0'
     testImplementation group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
-    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
-    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.1'
-    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
 }
 
